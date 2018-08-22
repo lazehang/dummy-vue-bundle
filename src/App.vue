@@ -1,17 +1,17 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Customizer/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Customizer from './components/Customizer'
+import 'bootstrap'
 
 export default {
-  name: 'app',
+  name: 'App',
   components: {
-    HelloWorld
+    Customizer
   }
 }
 </script>
