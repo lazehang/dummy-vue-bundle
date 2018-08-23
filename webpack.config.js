@@ -56,7 +56,7 @@ module.exports = {
         loader: 'vue-loader'
       },
       {
-          test: /\.ttf$/,
+          test: /\.(ttf|otf)$/,
           loader: 'url-loader'
       },
       {
