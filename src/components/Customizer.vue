@@ -1,6 +1,8 @@
 <template>
   <div class="undone-customizer">
-    <button v-b-modal.undone-modal>Customizer</button>
+    <a href="javascript:void(0)" class="btn undone-trigger" v-b-modal.undone-modal>
+      <img src="../assets/images/logo.png" alt="undone"/>
+    </a>
   
     <b-modal centered id="undone-modal" ref="undoneModal" class="px-0">
       <div slot="modal-header">
@@ -37,6 +39,24 @@
 </script>
 
 <style>
+  .undone-customizer {
+    position: fixed;
+    bottom: 3rem;
+    left: 0;
+  }
+
+  .undone-trigger{
+    padding: 0.5rem 2rem;
+    background: #000;
+    border-radius: 0;
+  
+  }
+
+  .undone-trigger img {
+    height: 80px;
+    width: auto;
+    margin: 0 auto;
+  }
   #undone-modal h1,
   #undone-modal h3,
   #undone-modal h4 {
@@ -72,6 +92,7 @@
   #undone-modal {
     font-size: 1.116rem;
     letter-spacing: 0.02rem;
+    z-index: 2147483647;
   }
   
   #undone-modal a {
