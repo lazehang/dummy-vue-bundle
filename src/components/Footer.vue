@@ -139,7 +139,7 @@
 
 <script>
     export default {
-        name: "lookbook",
+        name: "Footer",
     }
 </script>
 

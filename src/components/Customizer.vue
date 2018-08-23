@@ -12,7 +12,7 @@
       </div>
       <Undone @hide="hideModal" />
       <div slot="modal-footer">
-        <lookbook />
+        <u-footer />
       </div>
     </b-modal>
   </div>
@@ -21,14 +21,14 @@
 <script>
   import bModal from 'bootstrap-vue/es/components/modal/modal'
   import Undone from './Undone.vue'
-  import lookbook from './LookBook.vue'
+  import Footer from './Footer.vue'
   
   export default {
     name: 'Customizer',
     components: {
       'b-modal': bModal,
       Undone,
-      lookbook
+      'u-footer': Footer
     },
     methods: {
       hideModal() {
@@ -92,7 +92,6 @@
   #undone-modal {
     font-size: 1.116rem;
     letter-spacing: 0.02rem;
-    z-index: 2147483647;
   }
   
   #undone-modal a {
@@ -100,6 +99,7 @@
     letter-spacing: 0.02rem;
     font-size: 0.86rem;
     color: #000;
+    border: none;
   }
   
   #undone-modal a:hover,
@@ -127,7 +127,9 @@
     border-radius: 0%;
     margin: 0 0;
   }
-  
+  #undone-modal .modal-content {
+    z-index: 2147483647;    
+  }
   #undone-modal .modal-header>div {
     margin: 0 auto;
   }
