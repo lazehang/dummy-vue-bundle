@@ -399,7 +399,7 @@
   };
 </script>
 
-<style>
+<style scoped>
   .categories {
     height: 55px;
     background: #e6e6e6;

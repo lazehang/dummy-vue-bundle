@@ -6,7 +6,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 // Naming and path settings
 var appName = 'bundle';
 var entryPoint = './src/main.js';
-var exportPath = path.resolve(__dirname, 'dist');
+var exportPath = path.resolve(__dirname, '../Folio/js/undone');
 
 // Enviroment flag
 var plugins = [];
