@@ -2,47 +2,51 @@ var webpack = require('webpack');
 var path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin")
 
 // Naming and path settings
 var appName = 'bundle';
 var entryPoint = './src/main.js';
-var exportPath = path.resolve(__dirname, '../Folio/js/undone');
+var exportPath = path.resolve(__dirname, '../web/js/undone');
 
 // Enviroment flag
 var plugins = [];
-var env = process.env.WEBPACK_ENV || process.env.NODE_ENV;
+var env = process.env.WEBPACK_MODE || process.env.WEBPACK_ENV || process.env.NODE_ENV;
 
 // Differ settings based on production flag
 if (env === 'production') {
-  var UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
-
-  plugins.push(new UglifyJsPlugin({ minimize: true }));
-  plugins.push(new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: '"production"'
-      }
-    }
-  ));
-
-  appName = appName + '.min.js';
+  console.log("production")
+  
 } else {
-  appName = appName + '.js';
+  console.log("dev")
 }
 
 // Main Settings config
-module.exports = {
+module.exports = (env, argv) => ({
   entry: entryPoint,
   output: {
     path: exportPath,
-    filename: appName
+    filename: argv.mode === "production" ? appName + '.min.js' : appName + ".js"
   },
-  devtool: 'inline-source-map',
-    devServer: {
-      contentBase: './dist',
-      hot: true
-    },
+  devtool: 'source-map',
+  devServer: {
+    contentBase: './dist',
+    hot: true
+  },
+  optimization: {
+    minimize: argv.mode === "production",
+    minimizer: 
+      argv.mode === "production" ?
+      [
+        new UglifyJsPlugin({ 
+          test: /\min.js($|\?)/i
+        })
+       ] : []
+    
+  },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js$/,
         exclude: /(node_modules|bower_components)/,
@@ -121,10 +125,11 @@ module.exports = {
     extensions: ['*', '.js', '.vue', '.json']
   },
   plugins: [
+    new VueLoaderPlugin(),
       new CleanWebpackPlugin(['dist']),
       new HtmlWebpackPlugin({
         title: 'DEV'
       }),
       new webpack.HotModuleReplacementPlugin()
   ]
-};
+});

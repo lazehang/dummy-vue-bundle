@@ -1,53 +1,85 @@
 <template>
   <div class="undone-customizer">
-    <a href="javascript:void(0)" class="btn undone-trigger" v-b-modal.undone-modal>
-      <img src="../assets/images/logo.png" alt="undone"/>
-    </a>
-  
-    <b-modal centered id="undone-modal" ref="undoneModal" class="px-0">
-      <div slot="modal-header">
-        <div slot="modal-title" class="mx-auto">
-          <img src="https://www.undone.com/icons/Undone_logo_wht.png" alt="undone" class="src">
-        </div>
+    <productCard @toggleUndone="toggleUndone" v-if="hasProductWrapper"/>
+    <a v-else class="undone-trigger">Undone</a>
+    <transition name="slide-fade">
+      <div id="undone-customizer-modal" v-show="showModal">
+        <Undone @toggle="toggleUndone"/>
       </div>
-      <Undone @hide="hideModal" />
-      <div slot="modal-footer">
-      
-      </div>
-    </b-modal>
+    </transition>
   </div>
 </template>
 
 <script>
-  import bModal from 'bootstrap-vue/es/components/modal/modal'
   import Undone from './Undone.vue'
+  import productCard from './ProductCard.vue'
   
   export default {
     name: 'Customizer',
     components: {
-      'b-modal': bModal,
-      Undone
+      Undone, productCard
+    },
+    data() {
+      return {
+        showModal: false,
+        hasProductWrapper: false
+      }
     },
     methods: {
       hideModal() {
         this.$refs.undoneModal.hide()
+      },
+      toggleUndone() {
+        this.showModal = !this.showModal;
+
+        if (this.showModal) {
+          document.body.style = "position:fixed"
+        }else {
+          document.body.style = ""
+        }
+
       }
-    }
+    },
+    mounted() {
+      if (document.getElementsByClassName('product-sec1')) {
+        this.hasProductWrapper = true
+      }
+    },
   }
 </script>
 
 <style>
   .undone-customizer {
+    height: 100%;
+    width: 100%;
+  }
+
+  #undone-customizer-modal {
+    z-index: 111;
     position: fixed;
-    bottom: 3rem;
-    left: 0;
+    left:0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow-y:auto;
+    overflow-x: hidden;
+    background: #0000008c;
+  }
+
+    
+  #undone-customizer-modal .undone-customizer-dialog{
+    font-size: 14px;
+    letter-spacing: 0.02rem;
   }
 
   .undone-trigger{
     padding: 0.5rem 2rem;
     background: #000;
     border-radius: 0;
-    height: 100%;
+    position: fixed;
+    bottom: 3rem;
+    left: 0;
+    z-index:1111;
   
   }
 
@@ -56,82 +88,84 @@
     width: auto;
     margin: 0 auto;
   }
-  #undone-modal h1,
-  #undone-modal h3,
-  #undone-modal h4 {
+  #undone-customizer-modal h1,
+  #undone-customizer-modal h3,
+  #undone-customizer-modal h4,
+  #undone-customizer-modal .h4,
+  #undone-customizer-modal .h5  {
     font-family: big_noodle_titling;
   }
   
-  #undone-modal h1 {
+  #undone-customizer-modal h1 {
     letter-spacing: 0.02rem;
-    font-size: 2rem;
+    font-size: 24px;
   }
   
-  #undone-modal h3 {
+  #undone-customizer-modal h3 {
     font-family: titillium_semibold;
     letter-spacing: 0.02rem;
-    font-size: 1.364rem;
+    font-size: 19px;
   }
   
-  #undone-modal h4 {
-    font-size: 1.116rem;
+  #undone-customizer-modal h4 {
+    font-size: 17px;
   }
   
-  #undone-modal h2 {
+  #undone-customizer-modal h2 {
+    font-family: big_noodle_titling;
     letter-spacing: 0.18rem;
-    font-size: 1.4rem;
+    font-size: 22px;
   }
   
-  #undone-modal h6 {
+  #undone-customizer-modal h6 {
     font-family: titillium_semibold;
     letter-spacing: 0.02rem;
-    font-size: 0.8866rem;
+    font-size: 16px;
+  }
+
+  #undone-customizer-modal .h4  {
+    font-family: big_noodle_titling;
+    letter-spacing: 0.18rem;
+    font-size: 17px;
+  }
+
+  #undone-customizer-modal .h5  {
+    font-size: 16px;
   }
   
-  #undone-modal {
-    font-size: 1.116rem;
-    letter-spacing: 0.02rem;
-  }
-  
-  #undone-modal a {
+  #undone-customizer-modal a {
     font-family: titillium_semibold;
     letter-spacing: 0.02rem;
-    font-size: 0.86rem;
+    font-size: 13px;
     color: #000;
     border: none;
   }
   
-  #undone-modal a:hover,
-  #undone-modal a:active,
-  #undone-modal a:focus {
+  #undone-customizer-modal a:hover,
+  #undone-customizer-modal a:active,
+  #undone-customizer-modal a:focus {
     color: #cbcbcb;
     text-decoration: none;
   }
   
-  #undone-modal.modal {
+  #undone-customizer-modal.modal {
     font-family: big_noodle_titling;
     
   }
   
-  #undone-modal .modal-body {
-    padding: 0;
-    overflow: auto;
-    height: 100%;
-    width: 100%;
-  }
-  
-  #undone-modal .modal-header {
+  #undone-customizer-modal .modal-header {
     background: #000;
     margin: 0 0;
+    color: #fff;
   }
-  #undone-modal .modal-content {
+  #undone-customizer-modal .modal-content {
     z-index: 2147483647;    
   }
-  #undone-modal .modal-header>div {
+  #undone-customizer-modal .modal-header>div {
     margin: 0 auto;
   }
   
-  #undone-modal .modal-footer {
+  #undone-customizer-modal .modal-footer {
     display: block;
     padding: 0;
     border: none;
@@ -141,25 +175,27 @@
     height: 50px;
   }
   
-  #undone-modal .modal-dialog {
-    max-width: 100%;
-    padding: 0 6%;
-    width: 100%;
-  }
-  
-  #undone-modal .modal-content {
-    min-height: 100%;
-  }
-    
-  #undone-modal .modal-footer {
+  #undone-customizer-modal .modal-footer {
     display:none;
   }
   
-  #undone-modal {
+  #undone-customizer-modal {
     text-align: left;
   }
   
   .watch-cate {
     margin-bottom: 1rem;
   }
+
+  .slide-fade-enter-active {
+  transition: all .3s ease;
+}
+.slide-fade-leave-active {
+  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.slide-fade-enter, .slide-fade-leave-to
+/* .slide-fade-leave-active below version 2.1.8 */ {
+  transform: translateX(10px);
+  opacity: 0;
+}
 </style>

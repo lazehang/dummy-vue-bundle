@@ -11,7 +11,7 @@
         "test": "npm run unit",
         "lint": "eslint --ext .js,.vue src test/unit",
         "prod": "node build/build.js",
-        "build": "cross-env WEBPACK_ENV=production webpack"
+        "build": "cross-env webpack --mode production"
     },
     "dependencies": {
         "babel-preset-es2015": "^6.24.1",

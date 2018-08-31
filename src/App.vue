@@ -1,6 +1,6 @@
 <template>
 
-    <Customizer/>
+    <Customizer />
 
 </template>
 

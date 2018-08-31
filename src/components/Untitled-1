@@ -66,44 +66,44 @@
     width: auto;
     margin: 0 auto;
   }
-  #undone-modal h1,
-  #undone-modal h3,
-  #undone-modal h4 {
+  #undone-customizer-modal h1,
+  #undone-customizer-modal h3,
+  #undone-customizer-modal h4 {
     font-family: big_noodle_titling;
   }
   
-  #undone-modal h1 {
+  #undone-customizer-modal h1 {
     letter-spacing: 0.02rem;
     font-size: 2rem;
   }
   
-  #undone-modal h3 {
+  #undone-customizer-modal h3 {
     font-family: titillium_semibold;
     letter-spacing: 0.02rem;
     font-size: 1.364rem;
   }
   
-  #undone-modal h4 {
+  #undone-customizer-modal h4 {
     font-size: 1.116rem;
   }
   
-  #undone-modal h2 {
+  #undone-customizer-modal h2 {
     letter-spacing: 0.18rem;
     font-size: 1.4rem;
   }
   
-  #undone-modal h6 {
+  #undone-customizer-modal h6 {
     font-family: titillium_semibold;
     letter-spacing: 0.02rem;
     font-size: 0.8866rem;
   }
   
-  #undone-modal {
+  #undone-customizer-modal {
     font-size: 1.116rem;
     letter-spacing: 0.02rem;
   }
   
-  #undone-modal a {
+  #undone-customizer-modal a {
     font-family: titillium_semibold;
     letter-spacing: 0.02rem;
     font-size: 0.86rem;
@@ -111,37 +111,37 @@
     border: none;
   }
   
-  #undone-modal a:hover,
-  #undone-modal a:active,
-  #undone-modal a:focus {
+  #undone-customizer-modal a:hover,
+  #undone-customizer-modal a:active,
+  #undone-customizer-modal a:focus {
     color: #cbcbcb;
     text-decoration: none;
   }
   
-  #undone-modal.modal {
+  #undone-customizer-modal.modal {
     font-family: big_noodle_titling;
     
   }
   
-  #undone-modal .modal-body {
+  #undone-customizer-modal .modal-body {
     padding: 0;
     overflow: auto;
     height: 100%;
     width: 100%;
   }
   
-  #undone-modal .modal-header {
+  #undone-customizer-modal .modal-header {
     background: #000;
     margin: 0 0;
   }
-  #undone-modal .modal-content {
+  #undone-customizer-modal .modal-content {
     z-index: 2147483647;    
   }
-  #undone-modal .modal-header>div {
+  #undone-customizer-modal .modal-header>div {
     margin: 0 auto;
   }
   
-  #undone-modal .modal-footer {
+  #undone-customizer-modal .modal-footer {
     display: block;
     padding: 0;
     border: none;
@@ -151,21 +151,21 @@
     height: 50px;
   }
   
-  #undone-modal .modal-dialog {
+  #undone-customizer-modal .modal-dialog {
     max-width: 100%;
     padding: 0 6rem;
     width: 100%;
   }
   
-  #undone-modal .modal-content {
+  #undone-customizer-modal .modal-content {
     min-height: 100%;
   }
     
-  #undone-modal .modal-footer {
+  #undone-customizer-modal .modal-footer {
     display:none;
   }
   
-  #undone-modal {
+  #undone-customizer-modal {
     text-align: left;
   }
   
